@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Young+Serif&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="shortcut icon"
+      href="img/favicon-32x32.png"
+      type="image/x-icon"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+    <title>frontend Mentor email validation</title>
+  </head>
+  <body>
+    <img class="mobile_img" src="img/illustration-sign-up-mobile.svg" alt="" />
+
+    <img
+      class="desktop_img"
+      src="img/illustration-sign-up-desktop.svg"
+      alt=""
+    />
+    <div class="main_section">
+      <h1>Stay updated!</h1>
+      <p>Join 60,000+ product mangers receiving monthly updates on:</p>
+      <div class="list">
+        <ul>
+          <img src="img/icon-list.svg" alt="" />
+          <li>Product discovery and building what matters</li>
+        </ul>
+
+        <ul>
+          <img src="img/icon-list.svg" alt="" />
+          <li>Manuring to ensuring updates are a success</li>
+        </ul>
+
+        <ul>
+          <img src="img/icon-list.svg" alt="" />
+          <li>And much more</li>
+        </ul>
+      </div>
+
+      <!-- <div class="email_address">
+        <h5>Email address:</h5> -->
+      <form id="emailForm">
+        <label for="email">Email:</label>
+        <p id="message"></p>
+        <input type="text" id="email" name="email" />
+        <button type="submit">Submit</button>
+      </form>
+      <!-- </div> -->
+    </div>
+
+    <script>
+      document
+        .getElementById("emailForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const email = document.getElementById("email").value;
+          const message = document.getElementById("message");
+
+          if (validateEmail(email)) {
+            message.textContent = "Valid email address.";
+            message.style.color = "green";
+            window.location.href = "succsess.html";
+          } else {
+            message.textContent = "Invalid email address.";
+            message.style.color = "red";
+            event.preventDefault();
+          }
+        });
+
+      function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+      }
+    </script>
+  </body>
+</html>
